@@ -53,4 +53,16 @@ fun main(){
     print("Fecha de Devolución: ")
     val Devolucion = readln()
 
+    //datos
+    val consulta = Prestamo(
+        libros = titulo,
+        tipoUsuario = tipoUser,
+        fechaPrestamo = datePrestamo,
+        fechaEntrega = Entrega,
+        fechaDevolucion = Devolucion
+    )
+
+    val diasretraso = calcularRetraso(consulta)
+    val moradiaria = moraPorTipo(consulta.tipoUsuario)
+
 }
