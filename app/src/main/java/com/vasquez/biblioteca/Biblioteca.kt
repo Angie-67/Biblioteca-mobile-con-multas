@@ -14,6 +14,17 @@ data class Prestamo(
     val fechaDevolucion: String
 )
 
+//tipo de usuario
+fun moraPorTipo(tipoUsuario: String): Double {
+    if (tipoUsuario == "docente") {
+        return 3.00
+    }
+    if (tipoUsuario == "estudiante") {
+        return 1.50
+    }
+    return 1.50
+}
+
 //main
 fun main(){
 }
