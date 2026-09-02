@@ -65,4 +65,41 @@ fun main(){
     val diasretraso = calcularRetraso(consulta)
     val moradiaria = moraPorTipo(consulta.tipoUsuario)
 
+    //mostrar
+    println()
+    println("==============================================")
+    println("==========SISTEMA DE DEVOLUCIÓN===============")
+    println("==============================================")
+    println("Libro: ${titulo}")
+    println("Tipo de usuario: ${tipoUser}")
+    println("Fecha de préstamo: ${datePrestamo}")
+    println("Fecha de entrega: ${Entrega}")
+    println("Fecha de devolución: ${Devolucion}")
+    println("Estado: Devuelto en ${diasretraso} dias de retraso")
+    println()
+
+    //tabla
+    println("==============DETALLE DE MORA=================")
+    println("-------------------------------------------------------")
+    println(String.format("%-5s %-15s %-15s %-15s", "Día", "Fecha", "Mora diaria", "Acumulado"))
+    println("--------------------------------------------------------")
+
+    val formato = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+    val fechainicial = LocalDate.parse(Entrega, formato)
+
+    var acumulacion = 0.00
+
+    if (diasretraso > 0) {
+        for (dia in 1..diasretraso) {
+            val fechamora = fechainicial.plusDays(dia.toLong())
+            acumulacion = acumulacion + moradiaria
+            println(
+                String.format("%-5d %-15s S/ %-12.2f S/ %-12.2f", dia, fechamora.format(formato), moradiaria, acumulacion))
+        }
+    } else {
+        //
+    }
+    println("-----------------------------------------------------------")
+    println(String.format("%-30s S/ %.2f", "TOTAL A PAGAR:", acumulacion))
+    println("------------------------------------------------------------")
 }
