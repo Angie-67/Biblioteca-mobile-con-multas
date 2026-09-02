@@ -36,4 +36,21 @@ fun calcularRetraso(prestamo: Prestamo): Int {
 
 //main
 fun main(){
+    //ingreso de datos
+    println("===========INGRESO DE DATOS==============")
+    print("Titulo del libro: ")
+    val titulo = readln()
+
+    print("Tipo de usuario: ")
+    val tipoUser = readln().lowercase()
+
+    print("Fecha de Préstamo: ")
+    val datePrestamo = readln()
+
+    print("Fecha de Entrega: ")
+    val Entrega = readln()
+
+    print("Fecha de Devolución: ")
+    val Devolucion = readln()
+
 }
