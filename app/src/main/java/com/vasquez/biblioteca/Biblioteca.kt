@@ -25,6 +25,15 @@ fun moraPorTipo(tipoUsuario: String): Double {
     return 1.50
 }
 
+//calcular dias de retraso
+fun calcularRetraso(prestamo: Prestamo): Int {
+    val formato = ofPattern("dd/MM/yyyy")
+    val entrega = LocalDate.parse(prestamo.fechaEntrega, formato)
+    val devolucion = LocalDate.parse(prestamo.fechaDevolucion, formato)
+    val dias = ChronoUnit.DAYS.between(entrega,devolucion)
+    return dias.toInt()
+}
+
 //main
 fun main(){
 }
